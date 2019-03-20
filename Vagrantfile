@@ -40,9 +40,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.network "private_network", ip: configs['configs']['general']['public_ip']
 
-  config.vm.synced_folder "./etc", "/etc/vagrant", owner: "vagrant", group: "vagrant"
-  config.vm.synced_folder "./sites", "/var/www", owner: "vagrant", group: "vagrant"
-  config.vm.synced_folder "./scripts", "/scripts", owner: "vagrant", group: "vagrant"
+  config.vm.synced_folder "./etc", "/etc/vagrant", type: "nfs"
+  config.vm.synced_folder "./sites", "/var/www", type: "nfs"
+  config.vm.synced_folder "./scripts", "/scripts", type: "nfs"
 
   config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/me.pub"
 end
